@@ -1,0 +1,16 @@
+---
+- name: create a file playbook
+  hosts: all
+  tasks:
+   - name: remove the file if exist
+     file:
+      path: /tmp/data
+      state: absent
+   - name: create a directory
+     file:
+      path: /tmp/data
+      state: directory
+   - name: create a file
+     file:
+      path: /tmp/data/practical
+      state: touch 

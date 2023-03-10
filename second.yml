@@ -1,0 +1,28 @@
+---
+- name: install httpd, start service, enable httpd,enable firewall and copy the index.html on all nodes
+  hosts: all
+  task:
+   - name: Endure webserver is configured
+     yum:
+      name: httpd
+      state: present 
+
+   - name: Ensure httpd is running
+     service:
+      name: httpd
+      state: started
+      enabled: true
+
+   - name: Ensure index.html is present
+     copy:
+      content: "<h1> This is the training</h1>\n"
+      dest: /var/www/html/index.html
+
+   - name: Enabled the http in firewall
+     firewalld:
+      service: http
+      state: enabled
+      immediate: true
+      permanent: true
+
+

@@ -1,0 +1,11 @@
+---
+- name: installing a package
+  hosts: all
+  tasks:
+   - name: install httpd here
+     yum:
+      name:
+       - httpd
+       - cups
+      state: absent
+

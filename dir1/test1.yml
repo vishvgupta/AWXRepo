@@ -1,0 +1,20 @@
+---
+- name: create directory and file
+  hosts: all
+  tasks:
+  - name: remove the file if exist
+    file: 
+     path: /tmp/data
+     state: absent
+
+  - name: create the directory
+    file:
+     path: /tmp/data
+     state: directory
+
+  - name: create the empty file
+    file:
+     path: /tmp/data/practical
+     state: touch
+
+ 
